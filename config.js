@@ -1,0 +1,1 @@
+export const API_HOST = "https://tier-list-backend.vercel.app"
