@@ -122,7 +122,7 @@ export default function FormCreateTier({ setOpenModalCreate, rows, isUpload}) {
         console.log(res)
         return toast.error(res.error)
     }
-    if (id) {
+    if (id && userId == session.id) {
       setTierInfo(res.tierUpdated.name, res.tierUpdated.description)
     }
     setOpenModalCreate(false)
