@@ -43,11 +43,11 @@ export default function FormCreateTier({ setOpenModalCreate, rows, isUpload}) {
       })
     }
     drawTier()
-    if (id) {
+    if (id && session.id == userId) {
       setName(nameTier)
       setDescription(descriptionTier)
     }
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     if (photo.photo) {    
