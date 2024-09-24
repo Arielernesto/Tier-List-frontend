@@ -100,10 +100,10 @@ export default function FormCreateTier({ setOpenModalCreate, rows, isUpload}) {
       }
  
 
-    const idParam = id && userId == session.id ? id : undefined 
+    const idParam = id ? id : undefined 
     const imageToUpload = photo.imageDefault ? photo.imageDefault : photo.photo
-    const pet = id ? await fetch(`${API_HOST}/tier/${id}`, {
-        method: "PATCH",
+    const pet = id && userId == session.id ? await fetch(`${API_HOST}/tier/${id}`, {
+        method: "PUT",
         credentials: "include",
         headers: {
             "Content-Type": "application/json"
