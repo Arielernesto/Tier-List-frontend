@@ -12,6 +12,7 @@ import { useTierStore } from "../../store/TierStore.js"
 import html2canvas from "html2canvas-pro"
 import z from 'zod'
 import { useParams } from "react-router-dom"
+import { useAuthStore } from "../../store/AuthStore.js"
 
 export default function FormCreateTier({ setOpenModalCreate, rows, isUpload}) {
   const [description, setDescription] = useState("")
@@ -23,6 +24,8 @@ export default function FormCreateTier({ setOpenModalCreate, rows, isUpload}) {
   const tierContainer = useTierStore(state => state.tier)
   const nameTier = useTierStore(state => state.nameTier)
   const descriptionTier = useTierStore(state => state.descriptionTier)
+  const userId = useTierStore(state => state.userId)
+  const session = useAuthStore(state => state.session)
   const setTierInfo = useTierStore(state => state.setTierInfo)
 
   const [rowError, setRowError] = useState("")
@@ -97,7 +100,7 @@ export default function FormCreateTier({ setOpenModalCreate, rows, isUpload}) {
       }
  
 
-    const idParam = id ? id : undefined 
+    const idParam = id && userId == session.id ? id : undefined 
     const imageToUpload = photo.imageDefault ? photo.imageDefault : photo.photo
     const pet = id ? await fetch(`${API_HOST}/tier/${id}`, {
         method: "PATCH",

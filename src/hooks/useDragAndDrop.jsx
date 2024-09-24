@@ -116,7 +116,7 @@ useEffect(() => {
     rows.forEach((obj, index) => {
       Object.assign(obj,newRows[index])
     })
-    setTierInfo(res.tier.name, res.tier.description)
+    setTierInfo(res.tier.name, res.tier.description, res.tier.userId)
     setRefresh(!refresh)
     setLoading(false)
   }

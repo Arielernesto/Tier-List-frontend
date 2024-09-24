@@ -42,8 +42,9 @@ export const useTierStore = create((set,get) => {
         average: "B",
         nameTier: "",
         descriptionTier: "",
-        setTierInfo: ( nameTier, descriptionTier) => {
-            set({ nameTier, descriptionTier })     
+        userId: "",
+        setTierInfo: ( nameTier, descriptionTier, userId) => {
+            set({ nameTier, descriptionTier, userId })     
         }
     }
 })
